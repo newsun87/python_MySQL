@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>網頁表單連線資料庫</title>
+  </head>
+<body> 
+  <form action = "/link" method="post">
+      <input type="submit" name="redirect" value="添加學生資料">
+      <input type="submit" name="redirect" value="查詢學生資料">
+      <input type="submit" name="redirect" value="刪除學生資料">
+  </form><br>
+  {% if result == {} %} 
+    {% else %} 
+    <table border = 1>		
+         {% for key in result %}                
+            <tr>              
+            <!-- <th> </th>-->
+               <td> {{key[0]}} </td>
+               <td> {{key[1]}} </td>
+               <td> {{key[2]}} </td>
+               <td> {{key[3]}} </td>
+               <td> {{key[4]}} </td>
+            </tr>            
+         {% endfor %}
+      </table>        
+   {% endif %}
+  {% if insert_result == {} %}       
+  <form method="post" action="/insert" method="post">
+    學號：<input type="text" name="sno" size="6" value="S007" size ="6"><p>
+    姓名：<input type="text" name="name"  size="12" value="小龍女" /><p>
+    住址：<Input type="text" name="address" value="新北市淡水區" size="25"/><p>
+    生日：<input type="text" name="birthday" value="1964-03-13" size="10"/><p>
+    <input type="submit" name="send" value="新增">
+  </form>
+  {% else %}
+   <p>{{insert_result}}</p> 
+   {% endif %}
+   {% if delete_result == {} %}       
+  <form method="post" action="/delete" method="post">
+    學號：<input type="text" name="sno" size="6" value="S007" size ="6"><p>   
+    <input type="submit" name="send" value="刪除">
+  </form>
+  {% else %}
+   <p>{{delete_result}}</p> 
+   {% endif %}
+</body>
+</html> 
+
+ 

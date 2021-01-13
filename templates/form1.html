@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>網頁表單測試</title>
+  </head>
+<body>
+   {% if result == {} %}
+   <form method="post">
+    姓名：<input type="text" name="user" size="10" maxlength="10" required> (必填)<p>
+    性別：<input type="text" name="sex" size="1" maxlength="1"  value="男" required> (男/女，必填)<p>
+    信箱：<Input type="email" name="email" size="25" maxlength="20"><p>
+    住址：<input type="text" name="address" size="25" maxlength="25"><p>
+    <input type="submit" name="send" value="送出">
+  </form>
+   {% else %}
+    <table border = 1>
+         {% for key in result %}         
+            <tr>
+               <th> {{key}} </th>
+               <td> {{result[key]}} </td>
+            </tr>            
+         {% endfor %}
+      </table>        
+   {% endif %}
+</body>
+</html> 
+ 
